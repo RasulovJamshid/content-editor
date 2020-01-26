@@ -1,0 +1,111 @@
+ul {
+    list-style-type: none;
+  }
+  
+  ul li:before {
+    content: "\2714\0020";
+  }
+select{
+     padding:0.5em 0.5em;
+     margin:0 0.3em 0.3em 0;
+     background-color: #383a3e;
+     color: #fff;
+     border-radius: 3px;
+     border:none;
+     font-weight: bolder;
+}  
+form > select{
+  margin-right:3px;
+}
+.root{
+    display: flex;
+    justify-content: center;
+}
+ .RichEditor-root {
+    background: #fff;
+    border: 1px solid #ddd;
+    font-family: open sans,helvetica neue,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    padding: 15px;
+    max-width: 800px;
+    margin:5px;
+    margin-top: 15px;
+    border-radius: 5px;
+    width:100%;
+  }
+  
+  .RichEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .RichEditor-editor .public-DraftEditorPlaceholder-root,
+  .RichEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+  }
+  
+  .RichEditor-editor .public-DraftEditor-content {
+    min-height: 100px;
+  }
+  
+  .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+    display: none;
+  }
+  
+  .RichEditor-editor .RichEditor-blockquote {
+    border-left: 5px solid #eee;
+    color: #666;
+    font-family: 'Hoefler Text', 'Georgia', serif;
+    font-style: italic;
+    margin: 16px 0;
+    padding: 10px 20px;
+  }
+  
+  .RichEditor-editor .public-DraftStyleDefault-pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'open sans','helvetica neue',Helvetica,Arial,serif;
+    font-size: 16px;
+    padding: 20px;
+  }
+  
+  .RichEditor-controls {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    margin-bottom: 15px;
+    user-select: none;
+  }
+  .RichEditor-inline{
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .RichEditor-block{
+    flex-wrap: wrap;
+    display: flex;
+}
+
+  
+  .RichEditor-styleButton {
+     padding:0.5em 0.5em;
+     margin:0 0.3em 0.3em 0;
+     border-radius:0.2em;
+     text-decoration:none;
+     font-family:'Roboto',sans-serif;
+     font-weight:400;
+     color:#FFFFFF;
+     background-color:#0e1117d9;
+     box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+     text-align:center;
+  }
+  
+  .RichEditor-activeButton {
+    background-color: #eb1010;
+  }
+
+  .RichEditor-tools{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      }
