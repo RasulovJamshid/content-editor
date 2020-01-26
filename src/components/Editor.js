@@ -1,15 +1,23 @@
-import {EditorState,RichUtils,CompositeDecorator , getDefaultKeyBinding} from "draft-js";
+import {EditorState,RichUtils, getDefaultKeyBinding} from "draft-js";
 import React  from "react";
 import "draft-js/dist/Draft.css";
 import "../style/editor.css";
 import "draft-js-undo-plugin/lib/plugin.css";
+import "draft-js-anchor-plugin/lib/plugin.css"
+import "draft-js-inline-toolbar-plugin/lib/plugin.css"
 import {BlockStyleControls,InlineStyleControls,undoPlugin} from "./Tools";
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import Editor from 'draft-js-plugins-editor';
-import Link from "./Link";
+import createLinkPlugin from 'draft-js-anchor-plugin';
+import { ItalicButton, BoldButton, UnderlineButton } from 'draft-js-buttons';
 const {UndoButton, RedoButton} =undoPlugin;
 
+const linkPlugin = createLinkPlugin({
+  placeholder: 'http://…'
+});
+const inlineToolbarPlugin = createInlineToolbarPlugin();
 
-
+const { InlineToolbar } = inlineToolbarPlugin;
 
 class RichEditor extends React.Component {
     constructor(props) {
@@ -92,10 +100,11 @@ class RichEditor extends React.Component {
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
-          <Link  editorState={editorState} onToggle={this.toggleInlineStyle}/>
+          {/* <Link editorRef={this.refs.editor} editorState={editorState} onToggle={this.toggleInlineStyle}/> */}
           </div>
           <div className={className} onClick={this.focus}>
             <Editor
+              spellCheck={false}
               blockStyleFn={getBlockStyle}
               customStyleMap={styleMap}
               editorState={editorState}
@@ -104,10 +113,24 @@ class RichEditor extends React.Component {
               onChange={this.onChange}
               placeholder="Tell a story..."
               ref="editor"
-              spellCheck={true}
-              plugins={[undoPlugin]}
+              plugins={[undoPlugin,linkPlugin,inlineToolbarPlugin]}
             />
-            <UndoButton/> <RedoButton/>
+            <InlineToolbar>
+                  {
+                  // may be use React.Fragment instead of div to improve perfomance after React 16
+                  (externalProps) => (
+                    <div>
+                      <BoldButton {...externalProps} />
+                      <ItalicButton {...externalProps} />
+                      <UnderlineButton {...externalProps} />
+                      <linkPlugin.LinkButton {...externalProps} />
+                    </div>
+                  )
+                } 
+            </InlineToolbar>
+            <UndoButton/> 
+            <RedoButton/>
+            
           </div>
         </div>
         </div>
@@ -148,6 +171,8 @@ class RichEditor extends React.Component {
       default: return null;
     }
   }
+
+
 
   
 
